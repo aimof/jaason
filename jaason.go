@@ -20,7 +20,8 @@ const (
 	Null
 )
 
-// Value is a parsed json value, such as Object, Array or something.
+// Value is a parsed JSON value.
+// It may be an object, array, boolean, number, string or null.
 type Value struct {
 	value interface{}
 	typ   Type
@@ -28,7 +29,7 @@ type Value struct {
 	fixed bool
 }
 
-// Parse json formatted string to Value.
+// Parse JSON formatted bytes to Value.
 func Parse(b []byte) (*Value, error) {
 	v := new(Value)
 	err := json.Unmarshal(b, &v.value)
